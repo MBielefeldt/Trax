@@ -8,6 +8,11 @@
 
 import UIKit
 
+struct GPXURL {
+    static let Notification = "GPXURL Radio Station"
+    static let Key = "GPXURL URL Key"
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
@@ -16,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool
     {
         println("Url = \(url)")
+        
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        let notification = NSNotification(name: GPXURL.Notification, object: self, userInfo: [GPXURL.Key:url])
+        notificationCenter.postNotification(notification)
+        
         return true
     }
 }
