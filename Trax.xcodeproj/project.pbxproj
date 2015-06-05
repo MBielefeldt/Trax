@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		081E57211B225F1A0059C8FD /* stanford.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 081E571F1B225F1A0059C8FD /* stanford.gpx */; };
+		081E57221B225F1A0059C8FD /* vacation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 081E57201B225F1A0059C8FD /* vacation.gpx */; };
 		08D6BA981B22592700811BD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6BA971B22592700811BD4 /* AppDelegate.swift */; };
 		08D6BA9A1B22592700811BD4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6BA991B22592700811BD4 /* ViewController.swift */; };
 		08D6BA9D1B22592700811BD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08D6BA9B1B22592700811BD4 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		081E571F1B225F1A0059C8FD /* stanford.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = stanford.gpx; sourceTree = "<group>"; };
+		081E57201B225F1A0059C8FD /* vacation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = vacation.gpx; sourceTree = "<group>"; };
 		08D6BA921B22592700811BD4 /* Trax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08D6BA961B22592700811BD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08D6BA971B22592700811BD4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		081E57231B225F240059C8FD /* Resource Files */ = {
+			isa = PBXGroup;
+			children = (
+				081E571F1B225F1A0059C8FD /* stanford.gpx */,
+				081E57201B225F1A0059C8FD /* vacation.gpx */,
+			);
+			name = "Resource Files";
+			sourceTree = "<group>";
+		};
 		08D6BA891B22592700811BD4 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +93,7 @@
 				08D6BA9B1B22592700811BD4 /* Main.storyboard */,
 				08D6BA971B22592700811BD4 /* AppDelegate.swift */,
 				08D6BA991B22592700811BD4 /* ViewController.swift */,
+				081E57231B225F240059C8FD /* Resource Files */,
 				08D6BA951B22592700811BD4 /* Supporting Files */,
 			);
 			path = Trax;
@@ -194,7 +208,9 @@
 			files = (
 				08D6BA9D1B22592700811BD4 /* Main.storyboard in Resources */,
 				08D6BAA21B22592700811BD4 /* LaunchScreen.xib in Resources */,
+				081E57211B225F1A0059C8FD /* stanford.gpx in Resources */,
 				08D6BA9F1B22592700811BD4 /* Images.xcassets in Resources */,
+				081E57221B225F1A0059C8FD /* vacation.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +427,7 @@
 				08D6BAB31B22592700811BD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		08D6BAB41B22592700811BD4 /* Build configuration list for PBXNativeTarget "TraxTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +436,7 @@
 				08D6BAB61B22592700811BD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
