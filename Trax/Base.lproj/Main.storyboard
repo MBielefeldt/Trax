@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A216g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A216g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="NFV-7w-oGU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -58,11 +58,81 @@
                             <constraint firstItem="Ezf-Sj-OiF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="iJ7-FQ-jdD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="nh2-nS-fs2"/>
                     <connections>
                         <outlet property="mapView" destination="6KA-IY-rzh" id="4l1-RE-yMI"/>
+                        <segue destination="MMT-kH-qba" kind="show" identifier="Show Image" id="1YD-Ta-Ntq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1312" y="386"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="hXf-kR-vUu">
+            <objects>
+                <viewController id="MMT-kH-qba" customClass="ImageViewController" customModule="Cassini" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ppx-Ha-yU6"/>
+                        <viewControllerLayoutGuide type="bottom" id="g9W-TC-9Dl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u91-7C-ut1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayk-5p-FoH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gWE-3x-yCg">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ayk-5p-FoH" firstAttribute="bottom" secondItem="g9W-TC-9Dl" secondAttribute="top" id="Fwh-2k-qHQ"/>
+                            <constraint firstItem="ayk-5p-FoH" firstAttribute="leading" secondItem="u91-7C-ut1" secondAttribute="leading" id="Qlz-Cs-Ja3"/>
+                            <constraint firstAttribute="centerX" secondItem="gWE-3x-yCg" secondAttribute="centerX" id="UKr-ug-Av0"/>
+                            <constraint firstItem="ayk-5p-FoH" firstAttribute="top" secondItem="u91-7C-ut1" secondAttribute="top" id="cb9-Pg-Y6R"/>
+                            <constraint firstItem="ayk-5p-FoH" firstAttribute="centerX" secondItem="gWE-3x-yCg" secondAttribute="centerX" id="dyO-49-iVu"/>
+                            <constraint firstAttribute="centerY" secondItem="gWE-3x-yCg" secondAttribute="centerY" id="g99-of-eWo"/>
+                            <constraint firstAttribute="trailing" secondItem="ayk-5p-FoH" secondAttribute="trailing" id="wYh-ez-8yo"/>
+                            <constraint firstItem="ayk-5p-FoH" firstAttribute="centerY" secondItem="gWE-3x-yCg" secondAttribute="centerY" id="xMP-MG-S69"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dyO-49-iVu"/>
+                                <exclude reference="xMP-MG-S69"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="ayk-5p-FoH" id="RZX-ps-DMK"/>
+                        <outlet property="spinner" destination="gWE-3x-yCg" id="bdN-BX-xfM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xvO-Qb-WXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2055" y="386"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Wjk-fN-0hN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NFV-7w-oGU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w1u-J9-IEP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="sHh-ZP-Z4H"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SkD-mF-h6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="568" y="386"/>
         </scene>
