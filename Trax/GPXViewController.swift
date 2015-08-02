@@ -44,6 +44,16 @@ class GPXViewController: UIViewController, MKMapViewDelegate
         mapView?.showAnnotations(waypoints, animated: true)
     }
     
+    @IBAction func addWaypoint(sender: UILongPressGestureRecognizer)
+    {
+        if sender.state == UIGestureRecognizerState.Began {
+            let coordinate = mapView.convertPoint(sender.locationInView(mapView), toCoordinateFromView: mapView)
+            let waypoint = EditableWaypoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            waypoint.name = "Dropped"
+            mapView.addAnnotation(waypoint)
+        }
+    }
+    
     private struct Constants {
         static let AnnotationViewReuseIdentifier = "waypoint"
         static let LeftCalloutFrame = CGRect(x: 0, y: 0, width: 59, height: 59)
@@ -61,13 +71,15 @@ class GPXViewController: UIViewController, MKMapViewDelegate
             view.annotation = annotation
         }
         
+        view.draggable = view.annotation is EditableWaypoint
+        
         view.leftCalloutAccessoryView = nil
         view.rightCalloutAccessoryView = nil
         if let waypoint = annotation as? GPX.Waypoint {
             if waypoint.thumbnailURL != nil {
-                view.leftCalloutAccessoryView = UIImageView(frame: Constants.LeftCalloutFrame)
+                view.leftCalloutAccessoryView = UIButton(frame: Constants.LeftCalloutFrame)
             }
-            if waypoint.imageURL != nil {
+            if waypoint is EditableWaypoint {
                 view.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
             }
         }
@@ -78,10 +90,10 @@ class GPXViewController: UIViewController, MKMapViewDelegate
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!)
     {
         if let waypoint = view.annotation as? GPX.Waypoint {
-            if let thumbnailImageView = view.leftCalloutAccessoryView as? UIImageView {
+            if let thumbnailImageButton = view.leftCalloutAccessoryView as? UIButton {
                 if let imageData = NSData(contentsOfURL: waypoint.thumbnailURL!) { /* blocks main thread !!! */
                     if let image = UIImage(data: imageData) {
-                        thumbnailImageView.image = image
+                        thumbnailImageButton.setImage(image, forState: .Normal)
                     }
                 }
             }
@@ -90,7 +102,12 @@ class GPXViewController: UIViewController, MKMapViewDelegate
     
     func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!)
     {
-        performSegueWithIdentifier(Constants.ShowImageSegue, sender: view)
+        if (control as? UIButton)?.buttonType == UIButtonType.DetailDisclosure {
+            
+        }
+        else if (view.annotation as? GPX.Waypoint)?.imageURL != nil {
+            performSegueWithIdentifier(Constants.ShowImageSegue, sender: view)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
